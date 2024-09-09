@@ -1,0 +1,32 @@
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}/${server.port}/eureka/
+
+server:
+  port: 8761
+
+
+
+#In the context of a Eureka server configuration, these two properties control how a client
+#(or the Eureka server itself) interacts with the Eureka service registry. Here's what they mean:
+
+#register-with-eureka: false:
+
+#  This setting determines whether the application should register itself with the Eureka server as a client.
+#  When set to false, the application (in this case, the Eureka server) does not register itself as a service.
+#  Since this is the Eureka server configuration itself, it doesn’t need to register with Eureka, as it is the server
+#  that other services will register to.
+
+#fetch-registry: false:
+
+#  This property controls whether the application should fetch the service registry from the Eureka server.
+#  When set to false, the application will not retrieve the list of registered services from the Eureka server.
+#  Since this configuration is for the Eureka server itself, it doesn’t need to fetch the registry of other services.
+#  These settings are typical for a Eureka server because it is not intended to act as a client or register with
+#  another Eureka server. It's responsible for managing service registrations and service discovery for other
+#  client applications.
